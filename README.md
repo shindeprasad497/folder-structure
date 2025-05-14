@@ -1,27 +1,79 @@
-# FolderStructure
+# Folder Structure App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+This project is an interactive Angular application for visualizing and managing a folder/file tree structure. You can add, nest, and drag-and-drop folders and files, similar to a file explorer.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Add folders and files at the root or as children of folders
+- Expand/collapse folders
+- Drag and drop nodes to move them within the tree or to the root
+- Prevents circular references and invalid moves
+- Simple, clean UI
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+- [Node.js](https://nodejs.org/) (v18 or later recommended)
+- [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Installation
 
-## Running unit tests
+1. Clone the repository or download the source code.
+2. Install dependencies:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```sh
+   npm install
+   ```
 
-## Running end-to-end tests
+### Running the Application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Start the development server:
 
-## Further help
+```sh
+npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Navigate to [http://localhost:4200/](http://localhost:4200/) in your browser.
+
+### Running Unit Tests
+
+Run the unit tests via [Karma](https://karma-runner.github.io):
+
+```sh
+npm test
+```
+
+### Building for Production
+
+To build the project for production:
+
+```sh
+npm run build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Project Structure
+
+- `src/app/folder-structure/`  
+  Contains the main folder structure component and its logic.
+- `src/app/app.component.ts`  
+  Root component that loads the folder structure UI.
+- `src/assets/`  
+  Static assets.
+
+## Usage
+
+- Click "+ Folder" or "+ File" to add items at the root.
+- Use the "+" buttons next to folders to add children.
+- Drag and drop nodes to move them within the tree or to the root drop zone.
+- Click folder icons to expand/collapse.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+Generated with [Angular CLI](https://github.com/angular/angular-cli).
