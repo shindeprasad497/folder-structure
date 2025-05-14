@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>📁 Folder Structure</h2>
+
+  <div class="action-bar">
+    <button (click)="addRoot('folder')">+ Folder</button>
+    <button (click)="addRoot('file')">+ File</button>
+  </div>
+
+  <!-- Root Drop Area -->
+  <div class="root-drop-zone"
+       (dragover)="onDragOver($event)"
+       (drop)="onRootDrop($event)">
+    Drag here to move to root
+  </div>
+
+  <div class="tree">
+    @for (node of treeData; track node.id) {
+      <ng-container *ngTemplateOutlet="treeNode; context: { node: node, parent: null }"></ng-container>
+    }
+  </div>
+</div>
+
+<ng-template #treeNode let-node="node" let-parent="parent">
+  <div class="node"
+       draggable="true"
+       (dragstart)="onDragStart($event, node, parent)"
+       (dragover)="onDragOver($event)"
+       (drop)="onDrop($event, node)">
+    
+    <div class="node-content">
+      @if (node.type === 'folder') {
+        <span class="toggle" (click)="toggle(node)">
+          {{ node.expanded ? '📂' : '📁' }}
+        </span>
+      } @else {
+        <span>📄</span>
+      }
+      <span class="name">{{ node.name }}</span>
+
+      @if (node.type === 'folder') {
+        <span class="node-buttons">
+          <button (click)="addChild(node, 'folder')">+📁</button>
+          <button (click)="addChild(node, 'file')">+📄</button>
+        </span>
+      }
+    </div>
+  </div>
+
+  @if (node.expanded && node.children?.length) {
+    <div class="children">
+      @for (child of node.children; track child.id) {
+        <ng-container *ngTemplateOutlet="treeNode; context: { node: child, parent: node }"></ng-container>
+      }
+    </div>
+  }
+</ng-template>
